@@ -1,32 +1,37 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import ContactCTA from "./components/ContactCTA";
+import SiteFooter from "./components/SiteFooter";
+import SiteHeader from "./components/SiteHeader";
+import { heartPalette, useCindyIdentity } from "./hooks/useCindyIdentity";
 
 const featuredPieces = [
   {
     title: "Aurora Reverie",
     medium: "Oil on Canvas",
     description: "Captures the hush before sunrise with luminous ribbons of color.",
-    price: "$480",
+    price: "KSh 62,400",
     size: "30 × 40 in",
-    background: "from-fuchsia-500/50 via-indigo-400/30 to-sky-400/40",
+    accent: "var(--color-blush)",
+    image: "/art1.jpg",
   },
   {
     title: "Nocturne Garden",
     medium: "Mixed Media",
     description: "A layered exploration of botanical silhouettes against nightfall.",
-    price: "$360",
+    price: "KSh 46,800",
     size: "24 × 36 in",
-    background: "from-emerald-400/50 via-slate-900/40 to-emerald-600/30",
+    accent: "var(--color-terracotta)",
   },
   {
     title: "Goldleaf Echoes",
     medium: "Acrylic & Gold Leaf",
     description: "Hand-applied metallic leaf shimmers across a restrained neutral palette.",
-    price: "$520",
+    price: "KSh 67,600",
     size: "36 × 36 in",
-    background: "from-amber-400/60 via-zinc-900/40 to-orange-500/40",
+    accent: "var(--color-blush)",
   },
 ];
 
@@ -48,7 +53,7 @@ const collections = [
 const testimonials = [
   {
     quote:
-      "Cindy translated memories from our travels into a piece that feels alive. The colors shift beautifully with the light.",
+      "Cindy❤️ translated memories from our travels into a piece that feels alive. The colors shift beautifully with the light.",
     author: "Elena & Marcus, Brooklyn",
   },
   {
@@ -63,294 +68,222 @@ const testimonials = [
   },
 ];
 
-const navItems = [
-  { label: "Originals", href: "#featured" },
-  { label: "Collections", href: "#collections" },
-  { label: "Stories", href: "#testimonials" },
-  { label: "Connect", href: "#connect" },
-];
+const heroArt = "/art1.jpg";
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { cindyName, whatsappLink } = useCindyIdentity();
 
   return (
-    <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_#1e1b4b_0%,_#0f172a_45%,_#020617_100%)] text-zinc-100">
+    <div className="relative overflow-hidden text-[color:var(--color-ink)]">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-24 top-44 h-80 w-80 rounded-full bg-emerald-500/20 blur-[160px] sm:-left-10 sm:top-20"
+        className="pointer-events-none absolute -left-24 top-20 h-80 w-80 rounded-full bg-[color:var(--color-blush)]/30 blur-[140px] sm:-left-10"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-72 h-96 w-96 rounded-full bg-fuchsia-500/15 blur-[180px]"
+        className="pointer-events-none absolute -right-32 top-60 h-96 w-96 rounded-full bg-[color:var(--color-terracotta)]/28 blur-[180px]"
       />
-      <main className="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-24 px-6 pb-24 pt-16 sm:px-10 lg:gap-32">
-        <div
-          aria-hidden="true"
-          className="absolute left-1/2 top-40 h-72 w-72 -translate-x-1/2 rounded-full bg-indigo-500/20 blur-3xl"
-        />
-        <header className="flex w-full flex-wrap items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-lg font-semibold tracking-wider text-white">
-              CK
-            </div>
-            <p className="text-sm uppercase tracking-[0.3em] text-zinc-400">
-              Cindy Kandie Art Gallery
-            </p>
-          </div>
-          <div className="flex items-center gap-4 md:gap-6">
-            <nav className="hidden items-center gap-6 text-sm uppercase tracking-[0.2em] text-zinc-400 md:flex">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  className="transition-colors hover:text-white"
-                  href={item.href}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-            <button
-              type="button"
-              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition hover:border-white/40 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-amber-300/70 md:hidden"
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((previous) => !previous)}
-            >
-              <span
-                className={`h-0.5 w-5 rounded-full bg-white transition-transform ${menuOpen ? "translate-y-1.5 rotate-45" : "-translate-y-1.5"}`}
-              />
-              <span
-                className={`absolute h-0.5 w-5 rounded-full bg-white transition-opacity ${menuOpen ? "opacity-0" : "opacity-100"}`}
-              />
-              <span
-                className={`h-0.5 w-5 rounded-full bg-white transition-transform ${menuOpen ? "-translate-y-1.5 -rotate-45" : "translate-y-1.5"}`}
-              />
-            </button>
-          </div>
-        </header>
-        {menuOpen ? (
-          <nav className="flex flex-col gap-3 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm uppercase tracking-[0.25em] text-zinc-200 md:hidden">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-full border border-transparent px-4 py-3 text-center transition-colors hover:border-white/30 hover:bg-white/10"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        ) : null}
+      <main className="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-20 px-6 pb-20 pt-12 sm:px-10 sm:pt-16 lg:gap-24">
+        <SiteHeader cindyName={cindyName} />
 
-        <section className="relative grid gap-12 lg:grid-cols-[1.15fr,0.85fr] lg:items-center">
-          <div className="flex flex-col gap-8">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-300/80">
-              Original art for soulful spaces
+        <section className="relative grid gap-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
+          <div className="flex flex-col gap-6">
+            <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
+              Hi, I’m {cindyName}
             </p>
-            <h1 className="text-balance text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Invite luminous color and grounded textures into your daily rituals.
+            <h1 className="text-balance text-4xl font-semibold leading-[1.15] text-[color:var(--color-cocoa)] sm:text-5xl lg:text-6xl">
+              I paint emotions through color.
             </h1>
-            <p className="max-w-xl text-lg leading-8 text-zinc-300">
-              Each piece is layered by hand in the studio using reclaimed pigments,
-              metallic leaf, and translucent glazes. Discover ready-to-hang originals
-              or collaborate on a commission that carries your story.
+            <p className="max-w-xl text-lg leading-relaxed text-[color:var(--color-ink)]/80">
+              Each piece is created with intention, emotion, and harmony — whether
+              abstract or not. Browse, feel, and if something speaks to you, let’s
+              make it yours.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href="#featured"
-                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-900 transition-colors hover:bg-zinc-200"
+                className="inline-flex items-center justify-center rounded-xl bg-[color:var(--color-terracotta)] px-8 py-3 text-sm font-semibold text-white shadow-[0_20px_60px_rgba(199,109,74,0.25)] transition-colors hover:bg-[color:var(--color-terracotta)]/90"
               >
-                Explore Originals
+                View the collection
               </Link>
               <a
-                href="mailto:hello@cindykandieart.com"
-                className="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:border-white hover:bg-white/10"
+                href={whatsappLink(`Hi ${cindyName}, I’d love to order a painting`)}
+                className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] px-8 py-3 text-sm font-semibold text-[color:var(--color-terracotta)] transition-colors hover:border-[color:var(--color-terracotta)]/60 hover:bg-[color:var(--color-blush)]/20"
               >
-                Commission A Piece
+                Order via WhatsApp
               </a>
             </div>
           </div>
 
-          <article className="relative flex flex-col gap-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+          <article className="relative flex flex-col gap-6 overflow-hidden rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-8 shadow-[0_24px_80px_var(--color-shadow-soft)] backdrop-blur">
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/5"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(230,166,176,0.28),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(199,109,74,0.22),transparent_45%)]"
             />
-            <div
-              aria-hidden="true"
-              className="absolute -left-16 top-16 h-40 w-40 rounded-full bg-amber-400/30 blur-3xl"
-            />
-            <div className="relative isolate flex flex-col gap-4">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/70">
-                Studio Highlight
+            <div className="relative isolate h-64 overflow-hidden rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] shadow-[0_16px_40px_var(--color-shadow-soft)]">
+              <Image
+                src={heroArt}
+                alt="Featured artwork titled Aurora Reverie"
+                fill
+                priority
+                sizes="(min-width: 1024px) 420px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative isolate flex flex-col gap-3">
+              <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
+                Studio highlight
               </p>
-              <h2 className="text-3xl font-semibold text-white">Aurora Reverie</h2>
-              <p className="text-sm uppercase tracking-[0.2em] text-white/50">
-                Oil on Canvas • 30 × 40 in
+              <h2 className="text-3xl font-semibold text-[color:var(--color-cocoa)]">
+                Aurora Reverie
+              </h2>
+              <p className="text-sm text-[color:var(--color-ink)]/70">
+                Oil on Canvas · 30 × 40 in
               </p>
             </div>
-            <div className="relative isolate rounded-2xl border border-white/10 bg-gradient-to-br from-fuchsia-500/40 via-indigo-400/30 to-sky-400/40 p-6 shadow-md shadow-fuchsia-500/20">
-              <p className="text-sm leading-6 text-white/80">
+            <div className="relative isolate rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-6 shadow-[0_16px_40px_var(--color-shadow-soft)]">
+              <p className="text-base leading-relaxed text-[color:var(--color-ink)]/80">
                 “Soft ribbons of light meet deep blues inspired by late winter mornings
                 on the lake.”
               </p>
             </div>
-            <div className="relative isolate flex items-center justify-between text-sm text-white/80">
-              <span>Available • ships worldwide</span>
-              <span className="font-medium text-white">$480</span>
+            <div className="relative isolate flex items-center justify-between text-sm text-[color:var(--color-cocoa)]">
+              <span>Available · ships worldwide</span>
+              <span className="font-semibold">KSh 62,400</span>
             </div>
+            <span
+              aria-hidden="true"
+              className="absolute right-4 top-4 inline-block h-2.5 w-2.5 rounded-full bg-[color:var(--color-heart)] shadow-[0_0_0_3px_rgba(201,74,90,0.12)]"
+            />
           </article>
+        </section>
+
+        <section id="about" className="flex flex-col gap-8 rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-8 shadow-[0_20px_60px_var(--color-shadow-soft)]">
+          <div className="flex flex-col gap-3">
+            <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
+              A little about my art
+            </p>
+            <h2 className="text-3xl font-semibold text-[color:var(--color-cocoa)]">
+              The heart behind every stroke
+            </h2>
+          </div>
+          <div className="grid gap-6 text-lg leading-relaxed text-[color:var(--color-ink)]/80 lg:grid-cols-2">
+            <p>
+              My art lives at the intersection of color, emotion, and intuition. Some
+              pieces are abstract, some are not — but all of them are guided by feeling.
+            </p>
+            <p>
+              I love playing with many colors and letting them find harmony together.
+              Every brushstroke is intentional, every piece carries presence. I sign my
+              work with a heart {heartPalette[2]} because love is always part of the process.
+            </p>
+          </div>
+          <Link
+            href="/about"
+            className="inline-flex w-fit items-center justify-center rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] px-5 py-2.5 text-sm font-semibold text-[color:var(--color-terracotta)] transition hover:border-[color:var(--color-terracotta)]/60 hover:bg-[color:var(--color-blush)]/25"
+          >
+            More about my art
+          </Link>
         </section>
 
         <section id="featured" className="flex flex-col gap-10">
           <div className="flex flex-col gap-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-300/80">
-              Curated originals
+            <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
+              Available pieces
             </p>
-            <h2 className="text-3xl font-semibold text-white">
-              One-of-a-kind artworks ready to live with you.
+            <h2 className="text-3xl font-semibold text-[color:var(--color-cocoa)]">
+              These are ready artworks looking for a home.
             </h2>
-            <p className="max-w-2xl text-lg text-zinc-300">
-              Each painting is sealed with archival varnish and arrives framed with a
-              certificate of authenticity.
+            <p className="max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink)]/80">
+              Each piece is original and created in its own moment of flow.
             </p>
+            <Link
+              href="/available"
+              className="inline-flex w-fit items-center justify-center rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] px-5 py-2.5 text-sm font-semibold text-[color:var(--color-terracotta)] transition hover:border-[color:var(--color-terracotta)]/60 hover:bg-[color:var(--color-blush)]/25"
+            >
+              More available work
+            </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredPieces.map((piece) => (
               <article
                 key={piece.title}
-                className="relative flex h-full flex-col gap-6 overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-white/10 via-indigo-500/10 to-transparent p-6 shadow-lg shadow-black/20"
+                className="relative flex h-full flex-col gap-5 overflow-hidden rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-6 shadow-[0_20px_60px_var(--color-shadow-soft)]"
               >
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5"
-                />
-                <div className="relative z-10 flex h-full flex-col gap-6">
-                  <div
-                    className={`h-44 rounded-2xl border border-white/10 bg-gradient-to-br ${piece.background}`}
-                  />
-                  <div className="flex flex-col gap-3">
-                    <h3 className="text-xl font-semibold text-white">{piece.title}</h3>
-                    <p className="text-sm uppercase tracking-[0.3em] text-white/60">
-                      {piece.medium} • {piece.size}
+                <div className="relative z-10 flex h-full flex-col gap-5">
+                  <div className="relative h-44 overflow-hidden rounded-lg border border-[color:var(--color-border-soft)] shadow-[0_16px_40px_var(--color-shadow-soft)]">
+                    {piece.image ? (
+                      <Image
+                        src={piece.image}
+                        alt={piece.title}
+                        fill
+                        sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="h-full w-full"
+                        style={{
+                          background: `linear-gradient(135deg, ${piece.accent} 0%, rgba(46,46,46,0.04) 100%)`,
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-xl font-semibold text-[color:var(--color-cocoa)]">
+                      {piece.title}
+                    </h3>
+                    <p className="text-sm text-[color:var(--color-ink)]/70">
+                      {piece.medium} · {piece.size}
                     </p>
-                    <p className="text-sm leading-6 text-zinc-300">{piece.description}</p>
+                    <p className="text-sm leading-relaxed text-[color:var(--color-ink)]/80">
+                      {piece.description}
+                    </p>
                   </div>
-                  <div className="mt-auto flex items-center justify-between text-sm">
-                    <span className="text-white/70">Original • signed</span>
-                    <span className="text-white font-medium">{piece.price}</span>
+                  <div className="mt-auto flex items-center justify-between text-sm text-[color:var(--color-cocoa)]">
+                    <span>Original · signed</span>
+                    <span className="font-semibold">{piece.price}</span>
                   </div>
+                  <Link
+                    href={whatsappLink(`Hi ${cindyName}, I’d love to order this piece`)}
+                    className="inline-flex items-center justify-center rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-blush)]/30 px-4 py-2 text-sm font-semibold text-[color:var(--color-cocoa)] transition hover:border-[color:var(--color-terracotta)]/60 hover:bg-[color:var(--color-blush)]/50"
+                  >
+                    Order this piece via WhatsApp
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="collections" className="flex flex-col gap-10">
-          <div className="flex flex-col gap-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-300/80">
-              Collections
+        <section id="experiences" className="flex flex-col gap-8 rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-8 shadow-[0_20px_60px_var(--color-shadow-soft)]">
+          <div className="flex flex-col gap-3">
+            <p className="text-sm font-medium text-[color:var(--color-terracotta)]">
+              Live art & experiences
             </p>
-            <h2 className="text-3xl font-semibold text-white">
-              Explore the narratives that run through the studio.
+            <h2 className="text-3xl font-semibold text-[color:var(--color-cocoa)]">
+              Art, shared in real time
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {collections.map((collection) => (
-              <article
-                key={collection.title}
-                className="flex h-full flex-col gap-4 rounded-3xl border border-white/5 bg-gradient-to-br from-white/10 via-emerald-400/10 to-transparent p-6"
-              >
-                <h3 className="text-xl font-semibold text-white">{collection.title}</h3>
-                <p className="text-sm leading-6 text-zinc-300">{collection.blurb}</p>
-                <Link
-                  href="mailto:hello@cindykandieart.com?subject=Collection%20Inquiry"
-                  className="mt-auto text-sm uppercase tracking-[0.3em] text-amber-200 transition-colors hover:text-white"
-                >
-                  Request catalogue →
-                </Link>
-              </article>
-            ))}
-          </div>
+          <p className="text-lg leading-relaxed text-[color:var(--color-ink)]/80">
+            I also paint live at events — from quick sketches and skin art to digital
+            portraits. Art is even more powerful when shared in real time.
+          </p>
+          <Link
+            href={whatsappLink(`Hi ${cindyName}, let’s plan live art for our event`)}
+            className="inline-flex w-fit items-center justify-center rounded-lg bg-[color:var(--color-terracotta)] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_50px_rgba(199,109,74,0.25)] transition-colors hover:bg-[color:var(--color-terracotta)]/90"
+          >
+            Book for an event
+          </Link>
         </section>
 
-        <section id="testimonials" className="flex flex-col gap-10">
-          <div className="flex flex-col gap-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-300/80">
-              Collectors&apos; words
-            </p>
-            <h2 className="text-3xl font-semibold text-white">
-              Art that becomes part of your everyday rituals.
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <blockquote
-                key={testimonial.author}
-                className="flex h-full flex-col gap-6 rounded-3xl border border-white/5 bg-gradient-to-br from-white/10 via-fuchsia-500/10 to-transparent p-6"
-              >
-                <p className="text-sm leading-7 text-zinc-200">“{testimonial.quote}”</p>
-                <footer className="mt-auto text-sm uppercase tracking-[0.2em] text-white/60">
-                  {testimonial.author}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
+        <section id="connect" className="flex flex-col gap-12">
+          <ContactCTA
+            cindyName={cindyName}
+            whatsappHref={whatsappLink(`Hi ${cindyName}, let’s chat about your art`)}
+          />
+          <SiteFooter cindyName={cindyName} />
         </section>
-
-        <section
-          id="connect"
-          className="flex flex-col gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-indigo-500/10 to-transparent p-10 text-center sm:text-left"
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-2">
-              <p className="text-sm uppercase tracking-[0.35em] text-amber-300/80">
-                Stay in the studio loop
-              </p>
-              <h2 className="text-3xl font-semibold text-white">
-                Join monthly studio notes for new releases and process films.
-              </h2>
-            </div>
-            <p className="text-sm text-zinc-200 sm:max-w-sm">
-              No spam, just behind-the-scenes glimpses and first access to limited
-              editions.
-            </p>
-          </div>
-          <form className="flex flex-col gap-4 sm:flex-row">
-            <label className="sr-only" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              className="h-12 flex-1 rounded-full border border-white/20 bg-white/10 px-6 text-sm uppercase tracking-[0.2em] text-white placeholder:text-white/40 focus:border-white focus:outline-none"
-              required
-            />
-            <button
-              type="submit"
-              className="h-12 rounded-full bg-white px-8 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-900 transition-colors hover:bg-zinc-200"
-            >
-              Notify me
-            </button>
-          </form>
-        </section>
-
-        <footer className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-10 text-sm text-white/60 sm:flex-row">
-          <p>© {new Date().getFullYear()} Cindy Kandie Art Gallery. All rights reserved.</p>
-          <div className="flex gap-4 uppercase tracking-[0.2em]">
-            <a className="hover:text-white" href="https://www.instagram.com" target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-            <a className="hover:text-white" href="https://www.pinterest.com" target="_blank" rel="noreferrer">
-              Pinterest
-            </a>
-            <a className="hover:text-white" href="mailto:hello@cindykandieart.com">
-              Email
-            </a>
-          </div>
-        </footer>
       </main>
     </div>
   );
