@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Serif_Text } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -31,8 +32,13 @@ export default function RootLayout({
           {`@import url('https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');`}
         </style>
       </head>
-      <body className={`${playfair.variable} ${dmSerifText.variable} antialiased`}>
+
+      <body
+        className={`${playfair.variable} ${dmSerifText.variable} antialiased`}
+      >
         {children}
+
+        <Analytics />
       </body>
     </html>
   );
