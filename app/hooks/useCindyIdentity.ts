@@ -4,6 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 
 export const heartPalette = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤎"];
 
+export const instagramUrl = "https://www.instagram.com/paintedbycindyk";
+export const emailHref = "mailto:paintedbycindyk@gmail.com";
+
 export function useCindyIdentity() {
   const [heart, setHeart] = useState(heartPalette[0]);
 
@@ -12,11 +15,6 @@ export function useCindyIdentity() {
   }, []);
 
   const cindyName = useMemo(() => `Cindy${heart}`, [heart]);
-  const whatsappLink = useMemo(
-    () => (message: string) =>
-      `https://wa.me/254700000000?text=${encodeURIComponent(message)}`,
-    [],
-  );
 
-  return { cindyName, whatsappLink };
+  return { cindyName };
 }
