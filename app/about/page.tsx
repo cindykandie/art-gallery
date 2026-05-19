@@ -7,10 +7,11 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 import { useCindyIdentity } from "../hooks/useCindyIdentity";
 
+
 const heroImage = "/art1.jpg";
 
 export default function AboutPage() {
-  const { cindyName, whatsappLink } = useCindyIdentity();
+  const { cindyName } = useCindyIdentity();
 
   return (
     <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-6 pb-24 pt-16 sm:px-10 lg:gap-20">
@@ -67,10 +68,7 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <ContactCTA
-        cindyName={cindyName}
-        whatsappHref={whatsappLink(`Hi ${cindyName}, let’s chat about your art`)}
-      />
+      <ContactCTA cindyName={cindyName} />
       <SiteFooter cindyName={cindyName} />
     </main>
   );

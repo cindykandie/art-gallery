@@ -1,14 +1,11 @@
 import Link from "next/link";
+import { emailHref, instagramUrl } from "../hooks/useCindyIdentity";
 
 type ContactCTAProps = {
   cindyName: string;
-  whatsappHref: string;
 };
 
-export default function ContactCTA({
-  cindyName,
-  whatsappHref,
-}: ContactCTAProps) {
+export default function ContactCTA({ cindyName }: ContactCTAProps) {
   return (
     <section
       id="connect"
@@ -20,20 +17,30 @@ export default function ContactCTA({
             Thank you for being here 🫶🏽
           </p>
           <h2 className="text-3xl font-semibold text-[color:var(--color-heading)]">
-            Art is meant to be felt — and I’m grateful you’re part of this journey.
+            Art is meant to be felt — and I&apos;m grateful you&apos;re part of this journey.
           </h2>
         </div>
         <p className="text-sm text-[color:var(--color-ink)]/80 sm:max-w-sm">
-          If something speaks to you, let’s talk. I’m always happy to share more
+          If something speaks to you, let&apos;s talk. I&apos;m always happy to share more
           about each piece or plan something new together.
         </p>
       </div>
-      <Link
-        href={whatsappHref}
-        className="inline-flex items-center justify-center rounded-lg bg-[color:var(--color-terracotta)] px-8 py-3 text-sm font-semibold text-white shadow-[0_16px_50px_rgba(199,109,74,0.25)] transition-colors hover:bg-[color:var(--color-terracotta)]/90"
-      >
-        Chat with {cindyName} on WhatsApp
-      </Link>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Link
+          href={instagramUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-lg bg-[color:var(--color-terracotta)] px-8 py-3 text-sm font-semibold text-white shadow-[0_16px_50px_rgba(199,109,74,0.25)] transition-colors hover:bg-[color:var(--color-terracotta)]/90"
+        >
+          Follow {cindyName} on Instagram
+        </Link>
+        <Link
+          href={emailHref}
+          className="inline-flex items-center justify-center rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] px-8 py-3 text-sm font-semibold text-[color:var(--color-terracotta)] transition-colors hover:border-[color:var(--color-terracotta)]/60 hover:bg-[color:var(--color-blush)]/20"
+        >
+          Send an email
+        </Link>
+      </div>
     </section>
   );
 }
