@@ -2,191 +2,408 @@
 
 import { motion } from "framer-motion";
 
-const parts: { number: string; title: string; paragraphs: string[] }[] = [
+type Part = {
+  number: string;
+  title: string;
+  paragraphs: string[];
+  letter?: string[];
+};
+
+const parts: Part[] = [
   {
     number: "I",
-    title: "The Departure",
+    title: "The Second Goodbye",
     paragraphs: [
-      "The morning Granad left, there was no ceremony to it.",
-      "He pulled on his jacket at the door — the brown one with the missing button that Gwynetha had been meaning to replace for three years — and he kissed her once on the top of her head. Not her mouth. Not her cheek. The top of her head, where she wouldn't see it.",
-      '"I\'ll be back before the lamp runs out," he said.',
-      "Outside, the sky had gone the color of ash. Somewhere past the tree line, two cities had already gone dark. The radio had stopped broadcasting eleven days ago. Food was still manageable if you knew how to grow it, which Granad didn't, and their neighbor Pell had stopped speaking to anyone in the month since his wife disappeared.",
-      '"Don\'t," Gwynetha said.',
-      '"Don\'t what?"',
-      '"Don\'t say a thing like that and expect me to believe it."',
-      "He looked at her then — really looked, the way he almost never did anymore — and something passed across his face. Regret, maybe. Or relief. The two had started looking the same.",
-      "The children were still asleep. Mira, who was seven, and Solen, who was four and believed very firmly that danger was something that happened to other families. Granad looked toward the hallway, at their closed doors, and said nothing.",
-      "And then he was gone.",
+      `The first sign that something was wrong was that Granad kissed Gwynetha goodbye twice.`,
+      `The first kiss was hurried, distracted, already halfway toward the road leading to the city. The second came after he'd already slung his worn canvas bag over his shoulder and started walking down the hill.`,
+      `He turned around suddenly, walked all the way back to the porch, held her face in both hands, and kissed her slowly like he was memorizing her.`,
+      `"You already said goodbye," Gwynetha laughed nervously.`,
+      `Granad stared at her for a beat too long.`,
+      `"Yes," he said softly. "I suppose I did."`,
+      `Then he left.`,
+      `And that should have been that.`,
+      `In the old world, before the Blackouts and the Riots and the long collapse of supply chains, Granad worked maintenance in the city. Three buses and a train used to take him there. Now it took two days by foot and whatever luck God spared for travelers.`,
+      `Men left.`,
+      `Sometimes they came back.`,
+      `Sometimes they didn't.`,
+      `That was simply life now.`,
+      `By noon, Gwynetha had already begun mentally stretching the beans and maize flour to survive another week without him.`,
+      `By evening, she heard footsteps outside.`,
+      `Granad opened the door.`,
+      `Leni screamed first.`,
+      `"Dad!"`,
+      `Gratsi dropped the spoon she was carving into a toy horse.`,
+      `Gwynetha stood frozen beside the stove.`,
+      `Granad smiled awkwardly.`,
+      `"I forgot something," he said.`,
+      `"What?"`,
+      `He looked around the room as if searching for the answer with them.`,
+      `Then he pointed at Gwynetha.`,
+      `"My family."`,
+      `It was such a ridiculous line that she laughed despite herself.`,
+      `The children rushed him.`,
+      `He hugged them too tightly.`,
+      `Like someone who had learned hugs from books.`,
     ],
   },
   {
     number: "II",
-    title: "Return",
+    title: "The First Signs",
     paragraphs: [
-      "He came back that evening.",
-      "Gwynetha was at the stove when she heard the latch. She turned, and there he was — framed in the doorway, jacket still intact, boots still muddy. He looked at her, and she looked at him, and something very small and quiet moved inside her chest.",
-      '"That was fast," she said.',
-      '"Nothing to find," he said. "Roads are worse."',
-      "He sat at the table. He folded his hands. He looked at the lamp in the center of the table — the old oil lamp they'd inherited from her mother — and he watched the flame for a long moment.",
-      "Gwynetha set a plate in front of him and he said: Thank you.",
-      "Granad had not thanked her for a meal in four years. She knew this precisely because she had stopped counting.",
-      "She sat across from him. She watched him eat. He was careful about it. Deliberate. He ate the way a person eats when they are not sure what eating is but they have seen it done and are doing their best.",
-      "She did not say anything about it.",
-      "She told herself it was the roads. People returned different from roads like that.",
+      `At first, Gwynetha assumed he had simply changed his mind.`,
+      `The roads were dangerous. Maybe he'd heard gunfire near the lower bridge. Maybe the city had finally become impossible.`,
+      `She didn't question him much because people no longer questioned survival decisions. Everyone was exhausted.`,
+      `Still…`,
+      `Things felt off immediately.`,
+      `Granad no longer complained while eating.`,
+      `The real Granad always complained while eating.`,
+      `Too salty.`,
+      `Too cold.`,
+      `Too little oil.`,
+      `Too much oil.`,
+      `But this Granad ate everything with deep concentration, nodding thoughtfully after every bite like he was studying cuisine for an exam.`,
+      `"This cassava is emotionally comforting," he announced one evening.`,
+      `Gwynetha blinked.`,
+      `"What does that even mean?"`,
+      `"I am not entirely sure," he admitted.`,
+      `Leni snorted so hard juice came out his nose.`,
+      `Then there was the cleaning.`,
+      `The real Granad was not dirty exactly, but he believed chairs existed to hold clothes and that "organization" was something rich people invented.`,
+      `This Granad woke before sunrise and rearranged the kitchen shelves into perfect symmetrical rows.`,
+      `Beans by size.`,
+      `Cups by height.`,
+      `Knives aligned like ceremonial artifacts.`,
+      `One morning Gwynetha found him staring intensely at a crooked picture frame.`,
+      `"You okay?" she asked.`,
+      `"It's leaning."`,
+      `"So?"`,
+      `"It knows."`,
+      `"What?"`,
+      `"The imbalance."`,
+      `She stared at him.`,
+      `He stared back.`,
+      `Then he adjusted the frame by two millimeters and visibly relaxed.`,
     ],
   },
   {
     number: "III",
-    title: "The Small Differences",
+    title: "What Children Know",
     paragraphs: [
-      "It was the small things first.",
-      "He started waking before her. She would open her eyes to find his side of the bed already cool, and the sound of something gentle coming from the kitchen. He was learning to cook. Badly, at first — the kind of badly that suggested he was approaching it as a problem to be solved rather than a skill to be developed. Too much salt. Undercooked eggs. Once, inexplicably, he made something that tasted almost exactly like something her grandmother used to make, and when she asked him where he'd learned it he just said: I tried.",
-      "He began sitting with Mira in the evenings. Not beside her on the couch the way he used to — half-present, mind somewhere else — but across from her, at the small table she used for drawing. He watched her draw. He asked questions. What is that? Why did you give it wings? If it could speak, what would it say?",
-      "Mira bloomed under it.",
-      "Solen was more cautious. He watched the man who wore his father's face from a careful distance, as children sometimes sense the thing that adults are too tired or too frightened to name. He would approach only when invited, and even then he would stand just outside the edge of the lamplight, watching.",
-      "One evening, Gwynetha found a set of toys on the workbench. Small figures, cut from scrap metal and sanded smooth, the edges rounded so they wouldn't cut little hands. A horse. A boat. Something she couldn't identify that Solen later named a sky-dog.",
-      "She did not ask how long they had taken to make.",
-      "She did not ask many things.",
+      `The children noticed first.`,
+      `Children always did.`,
+      `"Dad's weird now," Gratsi whispered one night.`,
+      `"He listens too much," Leni replied.`,
+      `"What's wrong with listening?"`,
+      `"I don't know. It's creepy."`,
+      `The old Granad barely survived ten minutes of conversation before drifting somewhere else mentally. But this one listened like every word mattered.`,
+      `When Gratsi mentioned wanting strawberries once, he spent three days trying to cultivate them in cracked buckets behind the house.`,
+      `When Leni complained he was bored, Granad somehow built a wind-powered spinning game using scrap metal and fishing wire.`,
+      `"Where did you learn this?" Gwynetha asked one afternoon.`,
+      `Granad paused.`,
+      `"Observation."`,
+      `"From who?"`,
+      `"Yes."`,
+      `"That's not an answer."`,
+      `"I am improving."`,
+      `And somehow… he was.`,
+      `That was the dangerous part.`,
     ],
   },
   {
     number: "IV",
-    title: "The Garden",
+    title: "Softening",
     paragraphs: [
-      "In the second month, he started a garden.",
-      "The soil near their house was poor — clay-heavy, full of stones — and Granad had always said there was no point. You can't grow anything in ground like that. She had tried, years ago, and he had watched her fail with the quiet satisfaction of a man who liked being right.",
-      "Now he dug for hours. She watched from the window, her hands wrapped around a cup of tea, watching him turn the earth with a focus that felt almost sacred. He collected stones and laid them in patterns. He found compost in places she hadn't known to look. He planted seeds from a tin she didn't know they had.",
-      'When she went out to ask about it, he said: "Things grow where they\'re tended. I think I didn\'t know that before."',
-      "I think I didn't know that before.",
-      "Granad had never said anything like that. Granad was not a man who admitted to not knowing things.",
-      "She stood in the turned earth and looked at him for a long time.",
-      '"What are you?" she asked.',
-      "Not who. What.",
-      "He looked up at her. His eyes — Granad's eyes, the exact dark brown she had fallen in love with at nineteen — held something she couldn't name. Patience, maybe. Or grief. Or the specific tenderness of a thing that knows it is loved contingently.",
-      '"I\'m trying," he said.',
-      '"That\'s not an answer."',
-      '"I know," he said. "But it\'s what I have."',
+      `The world outside continued rotting.`,
+      `Smoke rose from distant neighborhoods some nights.`,
+      `People disappeared.`,
+      `A sickness spread through entire districts and left stray dogs wandering empty roads.`,
+      `But inside the house, life slowly became softer.`,
+      `Granad taught the children math by using beans.`,
+      `He started a tiny garden.`,
+      `He learned how to braid Gratsi's hair after secretly practicing on old rope behind the shed.`,
+      `At night, he asked Gwynetha questions.`,
+      `Not shallow ones.`,
+      `Real ones.`,
+      `"What did you dream about before the world ended?"`,
+      `"What made you choose me?"`,
+      `"What scares you most?"`,
+      `The real Granad had loved her, she knew that.`,
+      `But survival had swallowed him whole long ago.`,
+      `This version looked at her like she was still a person beneath the exhaustion.`,
+      `And Gwynetha hated herself for noticing.`,
     ],
   },
   {
     number: "V",
-    title: "The Question",
+    title: "The Rain",
     paragraphs: [
-      "She asked him directly in the fifth month.",
-      "The children were asleep. Outside, there was the sound of wind through grass — the world contracting around them, all the noise of civilization having slowly gone quiet. Pell's house was dark. The nearest town was three hours by foot and she hadn't been in two months.",
-      "She sat across from him with her hands flat on the table and she said:",
-      '"Granad didn\'t come back, did he."',
-      "The man wearing Granad's face didn't flinch. He had the stillness of something that had already made its peace with this conversation.",
-      '"No," he said.',
-      "The word landed quietly. Like a stone into water.",
-      '"What happened to him?"',
-      '"I don\'t know exactly. I found his jacket on the road. I understood — I think I understood — what I needed to do. What kind of shape to be. I\'ve been learning."',
-      '"Learning," she repeated.',
-      '"It\'s not the right word. I\'ve been becoming. Slowly. Imperfectly." He paused. "I\'ve made mistakes."',
-      '"The eggs."',
-      "Something moved across his face. Among other things.",
-      "She looked at her hands. She had spent five months sleeping beside this thing, eating meals it prepared, watching it braid her daughter's hair with a focused, loving care that the real Granad had never once offered. She had watched it make her son laugh. She had watched it tend a garden in clay soil that now, somehow, had green shoots pushing through.",
-      '"Are you dangerous?" she asked.',
-      '"I don\'t know what I am," he said. "I know what I want to be."',
-      '"What\'s that?"',
-      "He looked at her across the table, in the lamplight, with Granad's face and something else entirely behind his eyes.",
-      '"Enough," he said. "I want to be enough."',
+      `That night, the rain came hard against the tin roof.`,
+      `The children were asleep under three patched blankets, and the lantern burned low between Gwynetha and Granad.`,
+      `Or whatever he truly was.`,
+      `He sat cross-legged on the floor repairing one of Gratsi's sweaters with terrible stitching and frightening concentration.`,
+      `"You sew like a drunk fisherman," Gwynetha muttered.`,
+      `"I am improving," he replied seriously.`,
+      `"You say that every day."`,
+      `"Because every day it remains true."`,
+      `She laughed softly into her cup.`,
+      `The sound made him pause.`,
+      `Not glance.`,
+      `Pause.`,
+      `Like he had discovered something rare.`,
+      `"What?" she asked.`,
+      `"You do that less now."`,
+      `"Do what?"`,
+      `"Laugh."`,
+      `Something inside her tightened unexpectedly.`,
+      `He set the sweater down carefully.`,
+      `"In the recordings I built from observation," he said slowly, "you laughed more before."`,
+      `"Recordings?"`,
+      `"In my memory."`,
+      `"You make me sound dead."`,
+      `"You are not dead."`,
+      `"No," she said quietly. "Just tired."`,
+      `He looked at her for a very long moment.`,
+      `Then:`,
+      `"May I ask something unusual?"`,
+      `"That depends how unusual."`,
+      `"When humans ache emotionally… why do they pretend not to?"`,
+      `Gwynetha let out a breath through her nose.`,
+      `"You ask very annoying questions."`,
+      `"I know."`,
+      `"No, you don't."`,
+      `"I am learning that also."`,
+      `She shook her head smiling.`,
+      `Then he did something the real Granad had not done in years.`,
+      `He reached for her gently like he was asking permission before touching her.`,
+      `Not assuming.`,
+      `Not taking.`,
+      `Asking.`,
+      `Even now, after months beside him, his hands still carried that strange carefulness — like touching another person was an honor he hadn't fully earned.`,
+      `"You look at me," Gwynetha whispered.`,
+      `"I am supposed to."`,
+      `"No," she said. "You really look."`,
+      `The rain thickened outside.`,
+      `He touched her face with almost painful tenderness.`,
+      `Like he was still astonished she existed at all.`,
+      `And Gwynetha realized with sudden terrifying clarity that loneliness was not the absence of people.`,
+      `It was the absence of being known.`,
+      `When he kissed her, it wasn't hungry or rushed.`,
+      `It was studied.`,
+      `Curious.`,
+      `Patient.`,
+      `Like he was learning her language one breath at a time.`,
+      `And somehow that felt more intimate than anything she could remember.`,
+      `Afterward, lying beside him in the dim lantern light, Gwynetha stared at the ceiling unable to escape the terrible thought forming quietly in her chest:`,
+      `This thing pretending to be her husband had spent months learning how to love her better than the real man ever had.`,
+      `And part of her wished she hated him for it.`,
+      `But she didn't.`,
+      `Not even a little.`,
     ],
   },
   {
     number: "VI",
-    title: "What Love Learns",
+    title: "The Letter",
     paragraphs: [
-      "There was an evening in the seventh month when Mira was sick.",
-      "Fever. The bad kind, that climbed fast and made the air in the room feel different. Gwynetha sat on the edge of the small bed and pressed a cool cloth to her daughter's forehead and felt the particular terror of parenthood — that helpless love that has nowhere to go.",
-      "He came and sat on the other side.",
-      "He didn't say anything useful. He didn't pretend to have answers. He just stayed. For hours. Through the worst of it, through Mira's confused, frightened murmurings, through Solen waking and crying from his room, through all of it — he simply remained.",
-      "At some point in the night, Gwynetha fell asleep against the wall, and when she woke, the cloth had been refreshed and he was still there, watching the child breathe.",
-      '"Why?" she asked.',
-      '"She\'s afraid," he said. "Afraid shouldn\'t be alone."',
-      "She sat with that for a long time.",
+      `The letter arrived three months later.`,
+      `A teenage courier delivered it in exchange for potatoes and half a candle.`,
+      `FOR GWYNETHA, it read in messy handwriting.`,
+    ],
+    letter: [
+      `Made it to the city. Work camp near Sector 8.`,
+      `No way home yet.`,
+      `Miss you all every day.`,
+      `Tell Leni I still owe him a fishing trip.`,
+      `Tell Gratsi I found blue ribbon for her hair.`,
+      `I love you.`,
+      `— Granad`,
+    ],
+  },
+  {
+    number: "VI",
+    title: "The Letter (cont.)",
+    paragraphs: [
+      `Gwynetha read it three times.`,
+      `Then slowly looked up at the man repairing a chair leg beside the window.`,
+      `"What is that?" she asked quietly.`,
+      `Granad looked at the letter.`,
+      `For the first time since arriving, he looked afraid.`,
+      `"I do not know," he said.`,
+      `"You don't know?"`,
+      `"I know the object is paper."`,
+      `"Granad."`,
+      `He stood.`,
+      `The children looked between them silently.`,
+      `Gwynetha's stomach twisted.`,
+      `"Who are you?"`,
+      `The room went very still.`,
+      `Then Granad did something strange.`,
+      `He answered honestly.`,
+      `"I don't fully know that either."`,
     ],
   },
   {
     number: "VII",
-    title: "What Remains",
+    title: "The Truth",
     paragraphs: [
-      "The fever broke. The garden grew. The season turned.",
-      "She no longer asked herself whether it was right, what was happening in that small house at the edge of everything. The question had become less interesting than the living of it.",
-      "He was not Granad. He had never pretended otherwise, not really — not to her, once she'd asked. He was something else, wearing the shape of a man she had married and lost and perhaps, she sometimes thought, never really known at all.",
-      "But he was present. He was learning. He was trying to become enough, one day at a time, in the specific and unglamorous way that love actually requires.",
-      "She thought sometimes about Granad — the real one, wherever he was, whatever had happened on that road. She held grief for him in one hand and this strange, impossible life in the other, and she did not try to reconcile them. Some things don't reconcile. You just carry both.",
+      `He explained badly.`,
+      `Fragments.`,
+      `Pieces.`,
+      `Something about arriving during the electrical storms months ago.`,
+      `Something about finding Granad walking alone near the eastern road.`,
+      `Something about imitation.`,
+      `Adaptation.`,
+      `Observation.`,
+      `"I did not intend harm," he said.`,
+      `"That's comforting," Gwynetha snapped.`,
+      `"It is true."`,
+      `"You replaced my husband!"`,
+      `"Yes."`,
+      `"You lied to us!"`,
+      `"Yes."`,
+      `The honesty somehow made it worse.`,
+      `Leni looked terrified.`,
+      `Gratsi looked heartbroken.`,
+      `But Granad — not Granad — simply stood there devastated like he himself had only just realized what he'd done.`,
+      `"I thought," he said carefully, "that this was what I was supposed to do."`,
+      `"What?"`,
+      `"Become useful."`,
+      `The silence after that nearly swallowed the room whole.`,
+      `Because Gwynetha realized something awful.`,
+      `Part of her understood.`,
     ],
   },
   {
-    number: "—",
-    title: "Epilogue: The Shape of Things",
+    number: "VIII",
+    title: "Two Husbands",
     paragraphs: [
-      "One morning, almost a year after he had come back, he left for the settlement at Varne.",
-      "He returned before the lamp ran out.",
-      "He had traded two jars of preserves for a spool of thread, a length of cloth, and a button — small and brown, exactly the right size.",
-      "He set it on the table without a word.",
-      "She looked at it for a long time. Then she picked it up, and she began to sew.",
-      "Outside, the world was still broken. But inside the house, something impossible had learned what it meant to stay.",
+      `The real Granad returned in winter.`,
+      `Thinner.`,
+      `Bearded.`,
+      `Exhausted down to the bones.`,
+      `When he stepped through the front gate, the children froze.`,
+      `Gwynetha forgot how to breathe.`,
+      `And inside the house, the other Granad slowly stood from the dinner table.`,
+      `The two men stared at each other.`,
+      `Identical faces.`,
+      `Different souls.`,
+      `The real Granad dropped his bag.`,
+      `"What the fuck?"`,
+      `Nobody answered.`,
+      `Gratsi began crying immediately.`,
+      `Leni backed into a corner.`,
+      `Gwynetha opened her mouth and realized there were no words built for this kind of moment.`,
+      `The real Granad looked at the stranger.`,
+      `Then at the repaired furniture.`,
+      `The garden outside.`,
+      `The shelves.`,
+      `The children.`,
+      `Then finally at Gwynetha.`,
+      `And what broke him wasn't rage.`,
+      `It was confusion.`,
+      `Because nobody looked relieved.`,
+      `Nobody ran to throw the other man out.`,
+      `Even the children kept glancing between them uncertainly.`,
+      `The fake Granad stepped back first.`,
+      `"I can leave," he said quietly.`,
+      `But Gwynetha noticed something then.`,
+      `Leni instinctively grabbed the alien's sleeve.`,
+      `Just for a second.`,
+      `Just enough.`,
+      `The real Granad saw it too.`,
+      `And suddenly the situation became unbearable.`,
+      `Because the replacement wasn't a monster.`,
+      `He was… good.`,
+      `Trying.`,
+      `Learning.`,
+      `Present.`,
+      `The real Granad looked at Gwynetha with horror creeping slowly into his face.`,
+      `Not horror that something wore his skin.`,
+      `Horror that his absence had revealed how much space he'd left empty long before the apocalypse ever began.`,
+      `Outside, the wind rattled the dying world.`,
+      `Inside, two husbands stood in one kitchen while a family silently realized love was far more complicated than being human.`,
     ],
   },
 ];
 
-function StoryPart({ part }: { part: (typeof parts)[number] }) {
+const isDialogue = (s: string) => s.startsWith('"') || s.startsWith("“");
+
+const isPivotal = (s: string) =>
+  s === "It was the absence of being known." ||
+  s.startsWith("This thing pretending to be her husband had spent months") ||
+  s.startsWith("Horror that his absence had revealed") ||
+  s === "Inside, two husbands stood in one kitchen while a family silently realized love was far more complicated than being human.";
+
+const isShortEmphatic = (s: string) => s.length < 48 && !isDialogue(s) && !isPivotal(s);
+
+function StoryPart({ part }: { part: Part }) {
+  const showHeader = part.title !== "The Letter (cont.)";
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="mb-16 last:mb-0"
-    >
-      {/* Part header */}
-      <div className="mb-8 flex items-center gap-5">
-        <span className="font-serif text-3xl text-[color:var(--color-blush)]">{part.number}</span>
-        <div className="h-px flex-1 bg-[color:var(--color-border-soft)]" />
-        <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--color-terracotta)]">
-          {part.title}
-        </span>
-        <div className="h-px w-6 bg-[color:var(--color-border-soft)]" />
-      </div>
+    <div className="mb-16 last:mb-0">
+      {showHeader && (
+        <div className="mb-8 flex items-center gap-5">
+          <span className="font-serif text-3xl text-[color:var(--color-blush)]">{part.number}</span>
+          <div className="h-px flex-1 bg-[color:var(--color-border-soft)]" />
+          <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--color-terracotta)]">
+            {part.title}
+          </span>
+          <div className="h-px w-6 bg-[color:var(--color-border-soft)]" />
+        </div>
+      )}
 
-      {/* Paragraphs */}
-      <div className="space-y-5">
-        {part.paragraphs.map((para, pi) => {
-          const isDialogue = para.startsWith('"') || para.startsWith('"');
-          const isItalic =
-            para === "Not who. What." ||
-            para === "I think I didn't know that before." ||
-            para === "Among other things.";
-          const isPivotal =
-            para === '"Enough," he said. "I want to be enough."' ||
-            para === '"She\'s afraid," he said. "Afraid shouldn\'t be alone."' ||
-            para === "Outside, the world was still broken. But inside the house, something impossible had learned what it meant to stay.";
+      <div className="space-y-4">
+        {part.paragraphs.map((para, pi) => (
+          <motion.p
+            key={pi}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7 }}
+            className={[
+              "font-serif leading-[2] text-[15px]",
+              isDialogue(para)
+                ? "border-l-2 border-[color:var(--color-blush)]/60 pl-4 text-[color:var(--color-heading)]"
+                : isPivotal(para)
+                ? "text-base font-medium text-[color:var(--color-heading)]"
+                : isShortEmphatic(para)
+                ? "text-[color:var(--color-cocoa)]"
+                : "text-[color:var(--color-ink)]/80",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {para}
+          </motion.p>
+        ))}
 
-          return (
-            <p
-              key={pi}
-              className={[
-                "font-serif leading-[2] text-[15px]",
-                isDialogue
-                  ? "border-l-2 border-[color:var(--color-blush)]/50 pl-4 text-[color:var(--color-heading)]"
-                  : "",
-                isItalic ? "italic text-[color:var(--color-cocoa)]" : "",
-                isPivotal ? "font-medium text-[color:var(--color-heading)]" : "",
-                !isDialogue && !isItalic && !isPivotal
-                  ? "text-[color:var(--color-ink)]/80"
-                  : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              {para}
-            </p>
-          );
-        })}
+        {/* Letter rendering */}
+        {part.letter && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="my-6 rounded-lg border border-[color:var(--color-border-soft)] bg-[color:var(--color-blush)]/8 px-8 py-6"
+          >
+            {part.letter.map((line, li) => (
+              <p
+                key={li}
+                className={[
+                  "font-serif text-[15px] leading-[1.9] italic",
+                  line.startsWith("—")
+                    ? "mt-3 text-[color:var(--color-terracotta)]"
+                    : "text-[color:var(--color-cocoa)]",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                {line}
+              </p>
+            ))}
+          </motion.div>
+        )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -214,7 +431,7 @@ export function FullStorySection({ onComplete }: Props) {
           <div className="flex items-center justify-center gap-5 text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-ink)]/60">
             <span>Written by Cindy Kandie</span>
             <span className="text-[color:var(--color-border-soft)]">·</span>
-            <span>~12 minute read</span>
+            <span>~18 minute read</span>
           </div>
           <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-[color:var(--color-terracotta)]/60">
             Part of the PaintedByCindyk universe
@@ -223,8 +440,8 @@ export function FullStorySection({ onComplete }: Props) {
 
         {/* Story in a card */}
         <div className="rounded-xl border border-[color:var(--color-border-soft)] bg-[color:var(--color-canvas)] p-8 shadow-[0_20px_60px_var(--color-shadow-soft)] sm:p-12">
-          {parts.map((part) => (
-            <StoryPart key={part.number} part={part} />
+          {parts.map((part, i) => (
+            <StoryPart key={i} part={part} />
           ))}
 
           {/* End marker */}
@@ -237,8 +454,8 @@ export function FullStorySection({ onComplete }: Props) {
             className="mt-16 flex flex-col items-center gap-3"
           >
             <div className="h-px w-20 bg-[color:var(--color-border-soft)]" />
-            <span className="text-[color:var(--color-heart)] text-lg">❤</span>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]/50">
+            <span className="text-[color:var(--color-heart)]">❤</span>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]/40">
               End of story
             </p>
           </motion.div>
