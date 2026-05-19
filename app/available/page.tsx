@@ -7,11 +7,11 @@ import SiteHeader from "../components/SiteHeader";
 import { useCindyIdentity } from "../hooks/useCindyIdentity";
 
 const pieces = [
-  { title: "Aurora Reverie", image: "/art1.jpg" },
-  { title: "Nocturne Garden", image: "/art1.jpg" },
-  { title: "Goldleaf Echoes", image: "/art1.jpg" },
-  { title: "Olive Stillness", image: "/art1.jpg" },
-  { title: "Terracotta Tide", image: "/art1.jpg" },
+  { title: "Aurora Reverie", image: "/art1.png" },
+  { title: "Nocturne Garden", image: "/art1.png" },
+  { title: "Goldleaf Echoes", image: "/art1.png" },
+  { title: "Olive Stillness", image: "/art1.png" },
+  { title: "Terracotta Tide", image: "/art1.png" },
 ];
 
 export default function AvailablePage() {

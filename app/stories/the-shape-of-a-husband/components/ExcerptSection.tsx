@@ -56,7 +56,7 @@ export function ExcerptSection({ onReadFullStory, onComplete }: Props) {
                 sizes="(min-width: 1024px) 320px, 100vw"
                 className="object-cover"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = "/art1.jpg";
+                  (e.target as HTMLImageElement).src = "/art1.png";
                 }}
               />
             </div>
