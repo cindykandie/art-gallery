@@ -8,7 +8,7 @@ import SiteHeader from "../components/SiteHeader";
 import { useCindyIdentity } from "../hooks/useCindyIdentity";
 
 
-const heroImage = "/art1.jpg";
+const heroImage = "/art1.png";
 
 export default function AboutPage() {
   const { cindyName } = useCindyIdentity();

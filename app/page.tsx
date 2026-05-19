@@ -8,9 +8,9 @@ import SiteHeader from "./components/SiteHeader";
 import { emailHref, heartPalette, instagramUrl, useCindyIdentity } from "./hooks/useCindyIdentity";
 
 const featuredPieces = [
-  { title: "Aurora Reverie", image: "/art1.jpg" },
-  { title: "Nocturne Garden", image: "/art1.jpg" },
-  { title: "Goldleaf Echoes", image: "/art1.jpg" },
+  { title: "Aurora Reverie", image: "/art1.png" },
+  { title: "Nocturne Garden", image: "/art1.png" },
+  { title: "Goldleaf Echoes", image: "/art1.png" },
 ];
 
 export default function Home() {
@@ -63,7 +63,7 @@ export default function Home() {
           <article className="relative overflow-hidden rounded-xl border border-[color:var(--color-border-soft)] shadow-[0_24px_80px_var(--color-shadow-soft)]">
             <div className="relative h-96 w-full">
               <Image
-                src="/art1.jpg"
+                src="/art1.png"
                 alt="Featured artwork"
                 fill
                 priority
